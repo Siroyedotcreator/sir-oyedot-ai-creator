@@ -1,2 +1,19 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-https://sir-oyedot-ai-creator-1se5.vercel.app
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sir-oyedot-ai-creator-1se5.vercel.app/</loc>
+  </url>
+  <url>
+    <loc>https://sir-oyedot-ai-creator-1se5.vercel.app/about.html</loc>
+  </url>
+  <url>
+    <loc>https://sir-oyedot-ai-creator-1se5.vercel.app/projects.html</loc>
+  </url>
+  <url>
+    <loc>https://sir-oyedot-ai-creator-1se5.vercel.app/contact.html</loc>
+  </url>
+  <url>
+    <loc>https://sir-oyedot-ai-creator-1se5.vercel.app/press.html</loc>
+  </url>
+</urlset>
