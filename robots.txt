@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://siroyedotcreator.netlify.app/sitemap.xml
