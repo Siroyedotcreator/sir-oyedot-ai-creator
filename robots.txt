@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://siroyedotcreator.netlify.app/sitemap.xml
+Sitemap: https://sir-oyedot-ai-creator-1se5.vercel.app/sitemap.xml
