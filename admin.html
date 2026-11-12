@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#101a28">
+<title>Creator Studio | Sir Oyedot AI Creator</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/admin.css">
+<script defer src="assets/cms-config.js"></script>
+<script defer src="assets/admin.js"></script>
+</head>
+<body>
+<a class="skip" href="#admin-main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="Back to website"><span class="brand-mark">SO</span><span>Sir Oyedot <b>Creator Studio</b></span></a>
+  <div class="top-actions"><a href="index.html" target="_blank" rel="noopener noreferrer">View live website ↗</a><button id="logout" class="ghost-button" hidden type="button">Sign out</button></div>
+</header>
+<main id="admin-main" class="outer">
+<section class="gate" id="setup-panel" aria-labelledby="setup-title">
+  <div class="gate-icon">◈</div><span class="eyebrow">CREATOR STUDIO / SETUP</span>
+  <h1 id="setup-title">Your dashboard is built.<br><em>Connect its backend.</em></h1>
+  <p>Your public website is still live and unchanged. The dashboard needs a dedicated Supabase database and owner account before you can publish edits.</p>
+  <div class="info-list"><p><b>1.</b> Create your dedicated Sir Oyedot Supabase project.</p><p><b>2.</b> Install the prepared database schema and add your admin user.</p><p><b>3.</b> Enter the public project URL and publishable key in the website config.</p></div>
+  <a class="primary-link" href="https://github.com/Siroyedotcreator/sir-oyedot-ai-creator/blob/main/ADMIN_SETUP.md" target="_blank" rel="noopener noreferrer">Open connection instructions ↗</a>
+  <p class="footnote">Never put a Supabase secret or service role key in a public website.</p>
+</section>
+<section class="gate" id="login-panel" aria-labelledby="login-title" hidden>
+  <div class="gate-icon">◈</div><span class="eyebrow">PRIVATE ACCESS / CREATOR STUDIO</span>
+  <h1 id="login-title">Welcome back,<br><em>creator.</em></h1>
+  <p>Manage your portfolio, published videos and website settings from one place.</p>
+  <form id="login-form" class="stack">
+    <label>Email address<input name="email" type="email" autocomplete="username" required placeholder="Your admin email"></label>
+    <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Enter your password"></label>
+    <button class="primary-button" type="submit">Sign in securely ↗</button>
+  </form>
+  <p class="footnote">Only approved administrators can access your content. There is no public registration.</p>
+  <p class="feedback" id="login-feedback" role="status" aria-live="polite"></p>
+</section>
+<div class="workspace" id="workspace" hidden>
+  <aside class="sidebar" aria-label="Dashboard navigation">
+    <div class="side-heading"><span class="live-dot"></span> CREATOR CONTROL ROOM</div>
+    <nav class="side-nav" aria-label="Sections">
+      <button type="button" class="side-button active" data-tab="overview" aria-current="page"><span aria-hidden="true">◫</span> Overview</button>
+      <button type="button" class="side-button" data-tab="videos"><span aria-hidden="true">▶</span> Videos</button>
+      <button type="button" class="side-button" data-tab="projects"><span aria-hidden="true">◈</span> Projects</button>
+      <button type="button" class="side-button" data-tab="settings"><span aria-hidden="true">⚙</span> Site settings</button>
+    </nav>
+    <div class="sidebar-foot"><span>Sir Oyedot AI Creator</span><small>Private admin workspace</small></div>
+  </aside>
+  <div class="content">
+    <div class="content-head">
+      <div><p class="eyebrow">SIR OYEDOT / DASHBOARD</p><h1 id="view-title">Studio overview</h1><p id="view-description">Everything that powers your published portfolio.</p></div>
+      <a class="preview-link" href="projects.html#featured-clips" target="_blank" rel="noopener noreferrer">Preview website ↗</a>
+    </div>
+    <p class="feedback workspace-feedback" id="workspace-feedback" role="status" aria-live="polite"></p>
+    <section class="panel" id="tab-overview">
+      <div class="metric-grid"><article class="metric"><span>Total videos</span><strong id="stat-videos">0</strong><small>Published and drafts</small></article><article class="metric"><span>Live videos</span><strong id="stat-published">0</strong><small>Visible on your portfolio</small></article><article class="metric"><span>Creative projects</span><strong id="stat-projects">0</strong><small>Portfolio categories</small></article></div>
+      <div class="welcome-card"><div><p class="eyebrow">WHAT'S NEW IN YOUR STUDIO</p><h2>One place to manage your creative work.</h2><p>Add a video, edit a project or update your contact information. Publishing changes the live website without editing HTML or redeploying GitHub.</p></div><a href="projects.html" target="_blank" rel="noopener noreferrer">Explore public portfolio ↗</a></div>
+      <div class="overview-footer"><div><h3>Quick actions</h3><p>Choose what you want to update.</p></div><div class="quick-actions"><button type="button" data-tab="videos">Manage videos →</button><button type="button" data-tab="projects">Manage projects →</button><button type="button" data-tab="settings">Edit website settings →</button></div></div>
+    </section>
+    <section class="panel" id="tab-videos" hidden>
+      <div class="section-top"><div><h2>Video library</h2><p>Add published TikTok and YouTube links, change their order or hide any video.</p></div><button class="secondary-button" type="button" id="new-video">+ New video</button></div>
+      <form class="editor-form" id="video-form">
+        <input type="hidden" name="id">
+        <div class="form-title"><h3 id="video-form-title">Add a video</h3><span>Links only, no video files required</span></div>
+        <div class="field-grid">
+          <label>Platform<select name="platform" required><option value="tiktok">TikTok</option><option value="youtube">YouTube</option></select></label>
+          <label>Video label<input name="title" maxlength="160" required placeholder="TikTok video 07"></label>
+          <label class="full">Video URL<input name="url" type="url" required placeholder="https://www.tiktok.com/..."></label>
+          <label class="full">Optional preview image URL<input name="poster_url" type="url" placeholder="https://..."></label>
+          <label>Display order<input name="sort_order" type="number" value="100" min="-9999" max="99999"></label>
+          <label class="toggle-line"><input name="published" type="checkbox" checked><span>Published on website</span></label>
+        </div>
+        <div class="form-actions"><button class="primary-button" type="submit">Save video</button><button class="plain-button" id="cancel-video" type="button">Clear form</button></div>
+      </form>
+      <div class="content-list" id="video-list" aria-live="polite"></div>
+    </section>
+    <section class="panel" id="tab-projects" hidden>
+      <div class="section-top"><div><h2>Creative projects</h2><p>Edit descriptions and links for the work displayed on your portfolio.</p></div><button class="secondary-button" type="button" id="new-project">+ New project</button></div>
+      <form class="editor-form" id="project-form">
+        <input type="hidden" name="id">
+        <div class="form-title"><h3 id="project-form-title">Add a project</h3><span>Project slugs stay fixed after creation</span></div>
+        <div class="field-grid">
+          <label>Short URL slug<input name="slug" required pattern="[a-z0-9-]+" placeholder="my-next-film"></label>
+          <label>Project category<input name="label" placeholder="HISTORICAL STORYTELLING · SERIES"></label>
+          <label class="full">Project name<input name="title" maxlength="180" required placeholder="New cinematic film"></label>
+          <label class="full">Project description<textarea name="summary" rows="4" placeholder="What is the project about?"></textarea></label>
+          <label class="full">Optional note<textarea name="note" rows="2" placeholder="Creative disclosure or additional detail"></textarea></label>
+          <label>Link label<input name="link_label" placeholder="Watch the work"></label>
+          <label>Link URL<input name="link_url" type="url" placeholder="https://..."></label>
+          <label>Artwork style<select name="art_style"><option value="history">Historical</option><option value="wildlife">Wildlife</option><option value="commercial">Advertising</option></select></label>
+          <label>Artwork text<input name="art_text" placeholder="NEW FILM"></label>
+          <label>Display order<input name="sort_order" type="number" value="100" min="-9999" max="99999"></label>
+          <label class="toggle-line"><input name="published" type="checkbox" checked><span>Published on website</span></label>
+        </div>
+        <div class="form-actions"><button class="primary-button" type="submit">Save project</button><button class="plain-button" id="cancel-project" type="button">Clear form</button></div>
+      </form>
+      <div class="content-list" id="project-list" aria-live="polite"></div>
+    </section>
+    <section class="panel" id="tab-settings" hidden>
+      <div class="section-top"><div><h2>Website settings</h2><p>Manage contact information and an optional homepage announcement.</p></div></div>
+      <form class="editor-form settings-form" id="settings-form">
+        <div class="field-grid">
+          <label class="full">Homepage announcement<textarea name="announcement" rows="3" maxlength="500" placeholder="Leave blank to hide announcement"></textarea><small>Shows above the homepage's moving text strip.</small></label>
+          <label>WhatsApp number<input name="whatsapp_number" inputmode="tel" placeholder="2347066461764"><small>International digits only, without the + sign.</small></label>
+          <label>Contact email<input name="contact_email" type="email" placeholder="you@example.com"><small>Optional public email contact.</small></label>
+        </div>
+        <div class="form-actions"><button class="primary-button" type="submit">Save website settings</button></div>
+      </form>
+      <p class="muted-note">Website updates appear after a page refresh. Search engine metadata and your verified domain stay unchanged.</p>
+    </section>
+  </div>
+</div>
+</main>
+</body>
+</html>
