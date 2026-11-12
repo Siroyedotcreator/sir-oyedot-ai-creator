@@ -2,7 +2,7 @@
 
 Official source files for the public portfolio of **Sir Oyedot AI Creator**, professionally known as **Oyedotun Opeyemi Stephen**, a Nigerian AI video creator, cinematic storyteller, video editor and educator.
 
-**Live website:** https://siroyedotcreator.netlify.app/
+**Live website:** https://sir-oyedot-ai-creator-1se5.vercel.app/
 
 ## Portfolio
 
