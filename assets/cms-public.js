@@ -14,6 +14,7 @@
     return response.json();
   };
   const safeLink = (input) => {
+    if (!input || !String(input).trim()) return null;
     try {
       const url = new URL(input, window.location.href);
       return url.protocol === 'https:' || (url.protocol === 'http:' && url.origin === window.location.origin) ? url.href : null;
@@ -49,6 +50,16 @@
           link.textContent='WhatsApp · +'+phone+' ↗';
         }
       });
+    }
+    const email=String(settings.contact_email || '').trim();
+    if(email && /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+      const grid=document.querySelector('.contact-grid');
+      if(grid && !grid.querySelector('.cms-email-card')) {
+        const link=elt('a','contact-card cms-email-card');
+        link.href='mailto:'+email;
+        link.append(elt('span','contact-index','07'),elt('h2','','Email'),elt('p','','For projects, collaboration requests and enquiries.'),elt('strong','',email+' ↗'));
+        grid.append(link);
+      }
     }
     const text=String(settings.announcement || '').trim();
     if(text && document.querySelector('.marquee-band')) {

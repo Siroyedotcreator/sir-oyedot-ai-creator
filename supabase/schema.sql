@@ -75,8 +75,11 @@ using (exists(select 1 from public.admin_users a where a.user_id = (select auth.
 with check (id = 1 and exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
 
 drop policy if exists "public reads published videos or admins read all" on public.video_items;
-create policy "public reads published videos or admins read all" on public.video_items for select to anon, authenticated
-using (published or exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
+drop policy if exists "everyone reads published videos" on public.video_items;
+create policy "everyone reads published videos" on public.video_items for select to anon, authenticated using (published);
+drop policy if exists "admins read all videos" on public.video_items;
+create policy "admins read all videos" on public.video_items for select to authenticated
+using (exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
 drop policy if exists "admins insert videos" on public.video_items;
 create policy "admins insert videos" on public.video_items for insert to authenticated
 with check (exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
@@ -89,8 +92,11 @@ create policy "admins delete videos" on public.video_items for delete to authent
 using (exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
 
 drop policy if exists "public reads published projects or admins read all" on public.project_items;
-create policy "public reads published projects or admins read all" on public.project_items for select to anon, authenticated
-using (published or exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
+drop policy if exists "everyone reads published projects" on public.project_items;
+create policy "everyone reads published projects" on public.project_items for select to anon, authenticated using (published);
+drop policy if exists "admins read all projects" on public.project_items;
+create policy "admins read all projects" on public.project_items for select to authenticated
+using (exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
 drop policy if exists "admins insert projects" on public.project_items;
 create policy "admins insert projects" on public.project_items for insert to authenticated
 with check (exists(select 1 from public.admin_users a where a.user_id = (select auth.uid())));
