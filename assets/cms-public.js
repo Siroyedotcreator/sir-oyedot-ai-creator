@@ -52,7 +52,7 @@
       });
     }
     const email=String(settings.contact_email || '').trim();
-    if(email && /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+    if(email && email.includes('@') && email.includes('.') && !/\s/.test(email)) {
       const grid=document.querySelector('.contact-grid');
       if(grid && !grid.querySelector('.cms-email-card')) {
         const link=elt('a','contact-card cms-email-card');
