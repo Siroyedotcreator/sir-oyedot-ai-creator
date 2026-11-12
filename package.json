@@ -1,0 +1,9 @@
+{
+  "name": "sir-oyedot-ai-creator-backend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@vercel/blob": "2.9.0"
+  }
+}

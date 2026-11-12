@@ -121,13 +121,14 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 (async () => {
   if (!document.querySelector('main')) return;
   try {
-    const response = await fetch('/data/site.json', {cache:'no-cache'});
+    const response = await fetch('/api/site', {cache:'no-store'});
     if (!response.ok) return;
     const data = await response.json();
     if (typeof data.whatsapp === 'string' && /^[1-9]\d{7,14}$/.test(data.whatsapp)) {
       document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => {
         a.href='https://wa.me/'+data.whatsapp;
         if (a.textContent.includes('WhatsApp ·')) a.textContent='WhatsApp · +'+data.whatsapp+' ↗';
+        if(a.classList.contains('contact-card')){const strong=a.querySelector('strong');if(strong)strong.textContent='+'+data.whatsapp+' ↗';}
       });
     }
     if (!document.body.classList.contains('homepage')) return;

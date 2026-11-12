@@ -1,19 +1,20 @@
-# Sir Oyedot Website Admin
+# Sir Oyedot AI Creator — Owner Dashboard
 
-The dashboard is available at /admin.html after deployment.
+## Live entry
+https://sir-oyedot-ai-creator-1se5.vercel.app/admin.html
 
-## Required Vercel environment variables
+## Backend setup
+- **Vercel Blob**, public store `sir-oyedot-site-content`, connected to the site's production environment, provides durable JSON content storage.
+- `BLOB_READ_WRITE_TOKEN` is automatically provisioned by Vercel, never committed to GitHub.
+- `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` are configured as sensitive production environment variables and never committed to GitHub.
+- `api/admin.js` handles authenticated editing; `api/site.js` serves public website content.
+- The dashboard supports video URLs, homepage announcement, About text, WhatsApp number, and changing its own owner password.
+- The static site remains usable even when the backend is unavailable. `data/site.json` in GitHub is the initial fallback; owner edits are stored in Blob.
 
-Set these for the **sir-oyedot-ai-creator-1se5** Vercel project, in Production:
+## Security
+Owner sessions use signed, HttpOnly, Secure, SameSite cookies. POST requests are origin-validated. The owner password can be rotated inside the dashboard. The rotated password is stored as a keyed hash; the key remains in the environment. No plaintext password is stored in the repository or Blob.
 
-- `ADMIN_PASSWORD`: a unique, long, randomly generated password. Never commit this to GitHub.
-- `ADMIN_SESSION_SECRET`: at least 32 bytes of unpredictable random text, distinct from the password.
-- `GITHUB_CONTENT_TOKEN`: a fine-grained GitHub personal access token with **Contents: Read and write** permission limited to `Siroyedotcreator/sir-oyedot-ai-creator`.
+The site is a single-owner personal portfolio. Consider rate limiting via Vercel Firewall and stronger identity-provider login if expanding to multiple admin accounts.
 
-Then redeploy the Vercel project. Admin login will not work until all three are set. This is deliberate; the backend fails closed.
-
-The dashboard writes `data/site.json` to the GitHub main branch. Vercel redeploys it and `assets/main.js` reads the file publicly to show homepage updates and featured video links. Existing projects page and metadata are preserved.
-
-Security: Admin sessions use HMAC-signed HttpOnly Secure SameSite cookies; write requests check the same-origin header; the GitHub token is only used in the server-side function. Add persistent login rate limiting and stronger identity-provider authentication before inviting additional admins or exposing the system to significant traffic.
-
-No database has been connected, and no secret is stored in the repository.
+## Publish
+Pushing to main triggers Vercel production deployment. The first deployment after adding environment variables must finish before the backend can log in. Changes made through the dashboard take effect without redeploying.
