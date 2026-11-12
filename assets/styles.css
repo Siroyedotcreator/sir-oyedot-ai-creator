@@ -237,3 +237,18 @@ h1,h2,h3{text-wrap:balance}
 .cms-tiktok-link .clip-platform-stamp,.cms-tiktok-link .clip-preview-footer,.cms-tiktok-link .clip-preview-wordmark{position:absolute}
 .cms-tiktok-link .clip-glyph{position:absolute}
 @media(max-width:720px){.cms-announcement-inner{display:block}.cms-announcement-label{display:block;margin-bottom:5px}}
+
+
+/* Admin-managed homepage content */
+.managed-section{padding-top:70px;padding-bottom:95px}
+.managed-section h2{font-size:clamp(2rem,4vw,3.3rem)}
+.managed-announcement{font-size:clamp(1.1rem,2vw,1.5rem);font-weight:700;max-width:780px}
+.managed-about{color:#5c6571;max-width:780px;line-height:1.85}
+.managed-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}
+.managed-video-link{min-height:140px;display:flex;flex-direction:column;justify-content:space-between;gap:15px;text-decoration:none;color:#f8f6ef;background:linear-gradient(140deg,#182d3b,#0c1220);border-radius:10px;padding:22px;transition:transform .2s}
+.managed-video-link:hover{transform:translateY(-3px)}
+.managed-video-link span:first-child{font-size:10px;letter-spacing:.15em;color:#f4ad5e;font-weight:800}
+.managed-video-link strong{font-size:20px}
+.managed-video-link span:last-child{font-size:12px;color:#b9d4d7}
+@media(max-width:720px){.managed-video-grid{grid-template-columns:1fr 1fr}.managed-video-link{min-height:125px;padding:17px}}
+@media(max-width:420px){.managed-video-grid{grid-template-columns:1fr}}

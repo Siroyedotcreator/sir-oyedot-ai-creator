@@ -1,38 +1,19 @@
-# Sir Oyedot AI Creator – Backend and Admin Setup
+# Sir Oyedot Website Admin
 
-The GitHub/Vercel site stays live as normal if the CMS has not been connected.
-Admin dashboard URL: https://sir-oyedot-ai-creator-1se5.vercel.app/admin.html
+The dashboard is available at /admin.html after deployment.
 
-## Connect a dedicated Supabase project (owner-controlled)
+## Required Vercel environment variables
 
-1. Create a separate Supabase project called **Sir Oyedot CMS** in YOUR Supabase organisation. Do not reuse a client's database. Note project creation may have an associated cost.
-2. Open the Supabase project's **SQL Editor** and run `supabase/schema.sql` exactly once. This creates a CMS database with per-table Row Level Security, then imports six video links and three current projects.
-3. In Supabase **Authentication → Users**, create/invite your administrator with your private email and a strong password. Use a verified account. (The website has no public signup.)
-4. Copy that user's **User UID** from Authentication → Users. In the SQL Editor run:
-   `insert into public.admin_users(user_id) values ('YOUR_AUTH_USER_UUID') on conflict do nothing;`
-   Do not use an email address as the database admin ID.
-5. From Supabase **Settings → API Keys**, copy the **publishable** key (starts with `sb_publishable_`) and project URL (format `https://PROJECTREF.supabase.co`).
-6. In the website's GitHub repo, edit `assets/cms-config.js` and set `url` and `publishableKey`. This config is intentionally public. **Never put a Supabase secret key or service_role token into it.**
-7. Vercel automatically deploys the GitHub change. Visit `/admin.html` and log in with the Supabase Auth email and password.
+Set these for the **sir-oyedot-ai-creator-1se5** Vercel project, in Production:
 
-## What the dashboard can manage
+- `ADMIN_PASSWORD`: a unique, long, randomly generated password. Never commit this to GitHub.
+- `ADMIN_SESSION_SECRET`: at least 32 bytes of unpredictable random text, distinct from the password.
+- `GITHUB_CONTENT_TOKEN`: a fine-grained GitHub personal access token with **Contents: Read and write** permission limited to `Siroyedotcreator/sir-oyedot-ai-creator`.
 
-- Published/unpublished AI video links and their order
-- Creative project cards, descriptions, links, appearance and order
-- Site announcement, contact WhatsApp number and email field
-- Overview of stored content
+Then redeploy the Vercel project. Admin login will not work until all three are set. This is deliberate; the backend fails closed.
 
-Saving updates the database immediately. Public website pages fetch published rows on load, falling back to the original static page when the backend is unavailable. SEO and the original sitemap are preserved.
+The dashboard writes `data/site.json` to the GitHub main branch. Vercel redeploys it and `assets/main.js` reads the file publicly to show homepage updates and featured video links. Existing projects page and metadata are preserved.
 
-## Security
+Security: Admin sessions use HMAC-signed HttpOnly Secure SameSite cookies; write requests check the same-origin header; the GitHub token is only used in the server-side function. Add persistent login rate limiting and stronger identity-provider authentication before inviting additional admins or exposing the system to significant traffic.
 
-- Admin users are whitelisted by immutable Supabase Auth user UUID.
-- All exposed CMS tables have RLS. Anonymous users only read published content and site settings.
-- Admin sign-in is protected by Supabase Auth. There is no registration screen.
-- No server-side secret is stored in GitHub or browser code.
-- Admin sessions are stored in sessionStorage, cleared when the tab closes or you sign out.
-- For access management, remove an admin's UUID from `admin_users` and revoke their Auth sessions.
-
-## Notes
-
-The admin page is included in the live site but the backend is **not active** until the database has been created and configured. Do not regard the setup screen as a production-ready login before completing the steps above.
+No database has been connected, and no secret is stored in the repository.

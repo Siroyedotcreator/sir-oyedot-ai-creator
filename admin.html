@@ -1,118 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#101a28">
-<title>Creator Studio | Sir Oyedot AI Creator</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/admin.css">
-<script defer src="assets/cms-config.js"></script>
-<script defer src="assets/admin.js"></script>
-</head>
-<body>
-<a class="skip" href="#admin-main">Skip to content</a>
-<header class="topbar">
-  <a class="brand" href="index.html" aria-label="Back to website"><span class="brand-mark">SO</span><span>Sir Oyedot <b>Creator Studio</b></span></a>
-  <div class="top-actions"><a href="index.html" target="_blank" rel="noopener noreferrer">View live website ↗</a><button id="logout" class="ghost-button" hidden type="button">Sign out</button></div>
-</header>
-<main id="admin-main" class="outer">
-<section class="gate" id="setup-panel" aria-labelledby="setup-title">
-  <div class="gate-icon">◈</div><span class="eyebrow">CREATOR STUDIO / SETUP</span>
-  <h1 id="setup-title">Your dashboard is built.<br><em>Connect its backend.</em></h1>
-  <p>Your public website is still live and unchanged. The dashboard needs a dedicated Supabase database and owner account before you can publish edits.</p>
-  <div class="info-list"><p><b>1.</b> Create your dedicated Sir Oyedot Supabase project.</p><p><b>2.</b> Install the prepared database schema and add your admin user.</p><p><b>3.</b> Enter the public project URL and publishable key in the website config.</p></div>
-  <a class="primary-link" href="https://github.com/Siroyedotcreator/sir-oyedot-ai-creator/blob/main/ADMIN_SETUP.md" target="_blank" rel="noopener noreferrer">Open connection instructions ↗</a>
-  <p class="footnote">Never put a Supabase secret or service role key in a public website.</p>
-</section>
-<section class="gate" id="login-panel" aria-labelledby="login-title" hidden>
-  <div class="gate-icon">◈</div><span class="eyebrow">PRIVATE ACCESS / CREATOR STUDIO</span>
-  <h1 id="login-title">Welcome back,<br><em>creator.</em></h1>
-  <p>Manage your portfolio, published videos and website settings from one place.</p>
-  <form id="login-form" class="stack">
-    <label>Email address<input name="email" type="email" autocomplete="username" required placeholder="Your admin email"></label>
-    <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Enter your password"></label>
-    <button class="primary-button" type="submit">Sign in securely ↗</button>
-  </form>
-  <p class="footnote">Only approved administrators can access your content. There is no public registration.</p>
-  <p class="feedback" id="login-feedback" role="status" aria-live="polite"></p>
-</section>
-<div class="workspace" id="workspace" hidden>
-  <aside class="sidebar" aria-label="Dashboard navigation">
-    <div class="side-heading"><span class="live-dot"></span> CREATOR CONTROL ROOM</div>
-    <nav class="side-nav" aria-label="Sections">
-      <button type="button" class="side-button active" data-tab="overview" aria-current="page"><span aria-hidden="true">◫</span> Overview</button>
-      <button type="button" class="side-button" data-tab="videos"><span aria-hidden="true">▶</span> Videos</button>
-      <button type="button" class="side-button" data-tab="projects"><span aria-hidden="true">◈</span> Projects</button>
-      <button type="button" class="side-button" data-tab="settings"><span aria-hidden="true">⚙</span> Site settings</button>
-    </nav>
-    <div class="sidebar-foot"><span>Sir Oyedot AI Creator</span><small>Private admin workspace</small></div>
-  </aside>
-  <div class="content">
-    <div class="content-head">
-      <div><p class="eyebrow">SIR OYEDOT / DASHBOARD</p><h1 id="view-title">Studio overview</h1><p id="view-description">Everything that powers your published portfolio.</p></div>
-      <a class="preview-link" href="projects.html#featured-clips" target="_blank" rel="noopener noreferrer">Preview website ↗</a>
-    </div>
-    <p class="feedback workspace-feedback" id="workspace-feedback" role="status" aria-live="polite"></p>
-    <section class="panel" id="tab-overview">
-      <div class="metric-grid"><article class="metric"><span>Total videos</span><strong id="stat-videos">0</strong><small>Published and drafts</small></article><article class="metric"><span>Live videos</span><strong id="stat-published">0</strong><small>Visible on your portfolio</small></article><article class="metric"><span>Creative projects</span><strong id="stat-projects">0</strong><small>Portfolio categories</small></article></div>
-      <div class="welcome-card"><div><p class="eyebrow">WHAT'S NEW IN YOUR STUDIO</p><h2>One place to manage your creative work.</h2><p>Add a video, edit a project or update your contact information. Publishing changes the live website without editing HTML or redeploying GitHub.</p></div><a href="projects.html" target="_blank" rel="noopener noreferrer">Explore public portfolio ↗</a></div>
-      <div class="overview-footer"><div><h3>Quick actions</h3><p>Choose what you want to update.</p></div><div class="quick-actions"><button type="button" data-tab="videos">Manage videos →</button><button type="button" data-tab="projects">Manage projects →</button><button type="button" data-tab="settings">Edit website settings →</button></div></div>
-    </section>
-    <section class="panel" id="tab-videos" hidden>
-      <div class="section-top"><div><h2>Video library</h2><p>Add published TikTok and YouTube links, change their order or hide any video.</p></div><button class="secondary-button" type="button" id="new-video">+ New video</button></div>
-      <form class="editor-form" id="video-form">
-        <input type="hidden" name="id">
-        <div class="form-title"><h3 id="video-form-title">Add a video</h3><span>Links only, no video files required</span></div>
-        <div class="field-grid">
-          <label>Platform<select name="platform" required><option value="tiktok">TikTok</option><option value="youtube">YouTube</option></select></label>
-          <label>Video label<input name="title" maxlength="160" required placeholder="TikTok video 07"></label>
-          <label class="full">Video URL<input name="url" type="url" required placeholder="https://www.tiktok.com/..."></label>
-          <label class="full">Optional preview image URL<input name="poster_url" type="url" placeholder="https://..."></label>
-          <label>Display order<input name="sort_order" type="number" value="100" min="-9999" max="99999"></label>
-          <label class="toggle-line"><input name="published" type="checkbox" checked><span>Published on website</span></label>
-        </div>
-        <div class="form-actions"><button class="primary-button" type="submit">Save video</button><button class="plain-button" id="cancel-video" type="button">Clear form</button></div>
-      </form>
-      <div class="content-list" id="video-list" aria-live="polite"></div>
-    </section>
-    <section class="panel" id="tab-projects" hidden>
-      <div class="section-top"><div><h2>Creative projects</h2><p>Edit descriptions and links for the work displayed on your portfolio.</p></div><button class="secondary-button" type="button" id="new-project">+ New project</button></div>
-      <form class="editor-form" id="project-form">
-        <input type="hidden" name="id">
-        <div class="form-title"><h3 id="project-form-title">Add a project</h3><span>Project slugs stay fixed after creation</span></div>
-        <div class="field-grid">
-          <label>Short URL slug<input name="slug" required pattern="[a-z0-9-]+" placeholder="my-next-film"></label>
-          <label>Project category<input name="label" placeholder="HISTORICAL STORYTELLING · SERIES"></label>
-          <label class="full">Project name<input name="title" maxlength="180" required placeholder="New cinematic film"></label>
-          <label class="full">Project description<textarea name="summary" rows="4" placeholder="What is the project about?"></textarea></label>
-          <label class="full">Optional note<textarea name="note" rows="2" placeholder="Creative disclosure or additional detail"></textarea></label>
-          <label>Link label<input name="link_label" placeholder="Watch the work"></label>
-          <label>Link URL<input name="link_url" type="url" placeholder="https://..."></label>
-          <label>Artwork style<select name="art_style"><option value="history">Historical</option><option value="wildlife">Wildlife</option><option value="commercial">Advertising</option></select></label>
-          <label>Artwork text<input name="art_text" placeholder="NEW FILM"></label>
-          <label>Display order<input name="sort_order" type="number" value="100" min="-9999" max="99999"></label>
-          <label class="toggle-line"><input name="published" type="checkbox" checked><span>Published on website</span></label>
-        </div>
-        <div class="form-actions"><button class="primary-button" type="submit">Save project</button><button class="plain-button" id="cancel-project" type="button">Clear form</button></div>
-      </form>
-      <div class="content-list" id="project-list" aria-live="polite"></div>
-    </section>
-    <section class="panel" id="tab-settings" hidden>
-      <div class="section-top"><div><h2>Website settings</h2><p>Manage contact information and an optional homepage announcement.</p></div></div>
-      <form class="editor-form settings-form" id="settings-form">
-        <div class="field-grid">
-          <label class="full">Homepage announcement<textarea name="announcement" rows="3" maxlength="500" placeholder="Leave blank to hide announcement"></textarea><small>Shows above the homepage's moving text strip.</small></label>
-          <label>WhatsApp number<input name="whatsapp_number" inputmode="tel" placeholder="2347066461764"><small>International digits only, without the + sign.</small></label>
-          <label>Contact email<input name="contact_email" type="email" placeholder="you@example.com"><small>Optional public email contact.</small></label>
-        </div>
-        <div class="form-actions"><button class="primary-button" type="submit">Save website settings</button></div>
-      </form>
-      <p class="muted-note">Website updates appear after a page refresh. Search engine metadata and your verified domain stay unchanged.</p>
-    </section>
-  </div>
-</div>
-</main>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0c1220"><title>Owner Dashboard | Sir Oyedot AI Creator</title><style>
+:root{color-scheme:dark;--navy:#0c1220;--ink:#eff3f5;--gold:#f4ad5e;--border:#334051}
+*{box-sizing:border-box}body{margin:0;background:var(--navy);color:var(--ink);font:15px/1.6 system-ui,-apple-system,Arial,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.wrap{max-width:1020px;margin:auto;padding:28px 18px 80px}header{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:36px}header a{color:var(--gold);text-decoration:none}h1{font-size:clamp(27px,5vw,43px);line-height:1.15;margin:10px 0 14px}h2{font-size:21px;margin:0 0 16px}.muted{color:#b2bdc8}.panel{background:#152333;border:1px solid var(--border);padding:clamp(18px,4vw,30px);border-radius:15px;margin-bottom:18px}label{display:block;font-weight:650;margin:18px 0 7px}input,textarea{width:100%;border:1px solid #516070;border-radius:8px;background:#0c1725;color:white;padding:12px 14px;min-height:46px}textarea{min-height:120px;resize:vertical}input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}.button{border:0;border-radius:8px;background:var(--gold);color:#101820;padding:12px 19px;min-height:46px;font-weight:800}.button.secondary{background:#263b50;color:white}.button.danger{background:#5a2d32;color:white}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.video-row{display:flex;align-items:center;gap:10px;margin:10px 0}.video-row input{flex:1;min-width:0}.video-row button{min-width:46px;min-height:46px}.pill{display:inline-block;padding:5px 12px;border-radius:30px;background:#1d3541;color:#bfe3d7;font-size:12px;font-weight:800}.status{margin:18px 0;padding:12px;border:1px solid #516070;border-radius:8px;background:#18293a}.status:empty{display:none}.hidden{display:none!important}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:720px){.grid{grid-template-columns:1fr}.video-row{align-items:stretch}.video-row input{font-size:13px}} </style></head><body><div class="wrap"><header><div><strong>SIR OYEDOT</strong> <span style="color:#f4ad5e">AI CREATOR</span><div class="muted" style="font-size:12px">PRIVATE WEBSITE DASHBOARD</div></div><a href="/">View website ↗</a></header>
+<section id="login" class="panel"><span class="pill">OWNER ACCESS</span><h1>Welcome back.</h1><p class="muted">Sign in to manage your website content. Only the owner should have access.</p><form id="login-form"><label for="password">Admin password</label><input id="password" type="password" autocomplete="current-password" required><div class="actions"><button class="button" type="submit">Sign in</button></div></form></section>
+<main id="dashboard" class="hidden"><div style="display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:25px"><div><span class="pill">OWNER DASHBOARD</span><h1>Manage your website.</h1><p class="muted">Changes are saved to GitHub and deployed through Vercel.</p></div><button class="button secondary" id="logout">Sign out</button></div>
+<div class="grid"><section class="panel"><h2>Homepage announcement</h2><p class="muted">A short message displayed near the top of the homepage.</p><label for="announcement">Announcement</label><textarea id="announcement" maxlength="240" placeholder="New film coming soon..."></textarea></section><section class="panel"><h2>About text</h2><p class="muted">Your creator biography shown on the homepage.</p><label for="about">Short biography</label><textarea id="about" maxlength="1200"></textarea></section></div>
+<section class="panel"><h2>Contact</h2><p class="muted">Use your WhatsApp number in international format without the + sign. For example, 234...</p><label for="whatsapp">WhatsApp number</label><input id="whatsapp" type="tel" inputmode="numeric" placeholder="234..." maxlength="15"></section>
+<section class="panel"><h2>Featured videos</h2><p class="muted">Paste direct TikTok or YouTube video links. Your existing project gallery remains unchanged; this list powers the homepage's managed featured videos.</p><div id="videos"></div><div class="actions"><button class="button secondary" id="add-video" type="button">+ Add video</button></div></section>
+<div class="actions"><button class="button" id="save" type="button">Save and publish changes</button><button class="button secondary" id="reload" type="button">Discard unsaved changes</button></div></main>
+<p id="status" class="status" role="status" aria-live="polite"></p><p class="muted" style="font-size:12px">Protected dashboard · Never share your password or GitHub token.</p></div>
+<script>
+const $=id=>document.getElementById(id),api=(action,options={})=>fetch('/api/admin?action='+action,{credentials:'same-origin',...options}).then(async r=>{const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||'Request failed');return data});
+const status=message=>{$('status').textContent=message};
+const addVideo=url=>{const row=document.createElement('div');row.className='video-row';const input=document.createElement('input');input.type='url';input.placeholder='https://www.tiktok.com/... or https://youtube.com/...';input.value=url||'';input.setAttribute('aria-label','Video link');const remove=document.createElement('button');remove.className='button danger';remove.type='button';remove.textContent='×';remove.setAttribute('aria-label','Remove video');remove.onclick=()=>row.remove();row.append(input,remove);$('videos').append(row)};
+async function load(){status('Loading website content...');try{const data=await api('content');const c=data.content;$('announcement').value=c.announcement||'';$('about').value=c.about||'';$('whatsapp').value=c.whatsapp||'';$('videos').replaceChildren();(c.videos||[]).forEach(v=>addVideo(v.url));status('Ready. Edit your content and select Save.')}catch(e){status(e.message)}}
+async function init(){try{await api('session');$('login').classList.add('hidden');$('dashboard').classList.remove('hidden');await load()}catch{status('Sign in to continue.')}}
+$('login-form').addEventListener('submit',async e=>{e.preventDefault();status('Signing in...');try{await api('login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:$('password').value})});$('password').value='';await init()}catch(e){status(e.message)}});
+$('add-video').onclick=()=>addVideo('');
+$('reload').onclick=load;
+$('save').onclick=async()=>{const videos=[...$('videos').querySelectorAll('input')].map(x=>x.value.trim()).filter(Boolean).map(url=>({url}));const content={announcement:$('announcement').value,about:$('about').value,whatsapp:$('whatsapp').value,videos};status('Saving to GitHub...');$('save').disabled=true;try{const r=await api('content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content})});status(r.message)}catch(e){status(e.message)}finally{$('save').disabled=false}};
+$('logout').onclick=async()=>{await api('logout',{method:'POST'}).catch(()=>{});$('dashboard').classList.add('hidden');$('login').classList.remove('hidden');status('Signed out.')};init();
+</script></body></html>
