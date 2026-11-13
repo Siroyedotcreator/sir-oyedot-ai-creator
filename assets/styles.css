@@ -383,3 +383,16 @@ h1,h2,h3{text-wrap:balance}
 /* External YouTube links stay accessible as styled thumbnails without loading any embed. */
 a.youtube-launch{display:block;text-decoration:none;color:inherit;cursor:pointer}
 a.youtube-launch:focus-visible{outline:3px solid #f4ad5e;outline-offset:4px}
+
+/* Official creator portrait: original photo shown without filters or cropping. */
+.creator-portrait-frame{margin:0;width:100%;max-width:440px;min-width:0;justify-self:center;align-self:center;border-radius:11px;overflow:hidden;background:#111b26;box-shadow:19px 19px 0 #e9e3d8}
+.creator-portrait-frame img{width:100%;height:auto;display:block;aspect-ratio:2/3;object-fit:contain;object-position:center;background:#171a20}
+.creator-portrait-frame figcaption{padding:17px 22px 20px;background:#122131;color:#f6f3ec;display:flex;flex-direction:column;gap:3px}
+.creator-portrait-frame figcaption strong{font:800 14px Manrope,'DM Sans',sans-serif;letter-spacing:-.02em}
+.creator-portrait-frame figcaption span{font-size:11px;letter-spacing:.03em;color:#b8cec9}
+.about-portrait-frame{margin:0 0 28px;max-width:420px;overflow:hidden;border-radius:10px;background:#132433;box-shadow:14px 14px 0 #ece7dc}
+.about-portrait-frame img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;object-position:center;background:#171a20}
+.about-portrait-frame figcaption{padding:15px 21px;background:#132433;color:#f9f7ef;font-size:13px;line-height:1.6}
+.about-portrait-frame figcaption strong{font-weight:800;color:#bde7d9}
+@media(max-width:1020px) and (min-width:721px){.creator-portrait-frame{max-width:390px;box-shadow:10px 10px 0 #e9e3d8}}
+@media(max-width:720px){.creator-portrait-frame{max-width:360px;margin:0 auto;box-shadow:10px 10px 0 #e9e3d8}.creator-portrait-frame figcaption{padding:14px 18px}.about-portrait-frame{max-width:350px;margin:0 auto 30px;box-shadow:9px 9px 0 #ece7dc}}
