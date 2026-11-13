@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /api/
 
 Sitemap: https://sir-oyedot-ai-creator-1se5.vercel.app/sitemap.xml

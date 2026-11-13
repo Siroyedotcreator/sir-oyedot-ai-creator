@@ -361,3 +361,19 @@ h1,h2,h3{text-wrap:balance}
   .hero-video-pair .showreel-film-top{top:16px;left:14px;right:14px}
   .hero-video-pair .showreel-film-bottom strong{font-size:27px}
 }
+
+
+/* Two-video hero: defer third-party player until a visitor chooses to watch. */
+.hero-tiktok-player-slot{display:flex;flex:1 1 auto;position:relative;overflow:hidden;min-height:0;background:#0c1220}
+.hero-tiktok-player-slot .hero-tiktok-player{width:100%;height:100%;flex:1;display:block;border:0;min-height:0}
+.hero-tiktok-poster{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;width:100%;height:100%;min-width:0;overflow:hidden;border:0;cursor:pointer;text-align:center;color:#f8f6ef;background:radial-gradient(ellipse at 85% 18%,#a5e5d342,transparent 50%),radial-gradient(ellipse at 10% 80%,#f4ad5e38,transparent 50%),linear-gradient(150deg,#183b42,#0c1220 75%);padding:24px 14px}
+.hero-tiktok-poster:before{content:'';position:absolute;inset:18px;border:1px solid #a5e5d352;border-radius:9px;pointer-events:none}
+.hero-tiktok-poster:after{content:'';position:absolute;width:240px;height:240px;border-radius:50%;border:1px solid #f4ad5e3c;top:-105px;right:-126px;pointer-events:none;box-shadow:0 0 0 26px #f8f6ef0d}
+.hero-tiktok-poster-label,.hero-tiktok-poster-prompt{position:relative;z-index:1;font-size:9px;letter-spacing:.18em;font-weight:800;color:#a5e5d3}
+.hero-tiktok-poster-monogram{position:relative;z-index:1;font:900 clamp(49px,5vw,83px)/1 Manrope,sans-serif;letter-spacing:-.11em;color:#f8f6ef;text-shadow:4px 5px 0 #f4ad5e7e}
+.hero-tiktok-poster-monogram span{font:800 15px/1 sans-serif;display:inline-grid;place-items:center;vertical-align:middle;margin-left:8px;width:37px;height:37px;border-radius:50%;border:1px solid #f4ad5e;color:#f4ad5e;letter-spacing:0;text-shadow:none}
+.hero-tiktok-poster-title{position:relative;z-index:1;font:800 clamp(22px,2.5vw,30px)/1.1 Manrope,sans-serif;letter-spacing:-.04em}
+.hero-tiktok-poster-title em{font-style:normal;color:#f4ad5e}
+.hero-tiktok-poster-play{position:relative;z-index:1;display:grid;place-items:center;width:58px;height:58px;border:2px solid #f4ad5e;border-radius:50%;background:#f4ad5e;color:#0c1220;font-size:21px;box-shadow:0 0 0 7px #f4ad5e22;transition:transform .2s}
+.hero-tiktok-poster:hover .hero-tiktok-poster-play,.hero-tiktok-poster:focus-visible .hero-tiktok-poster-play{transform:scale(1.08)}
+@media(max-width:720px){.hero-tiktok-poster{gap:18px}.hero-tiktok-poster-monogram{font-size:77px}.hero-tiktok-poster-title{font-size:26px}}

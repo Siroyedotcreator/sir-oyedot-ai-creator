@@ -160,3 +160,22 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
     }
   }catch(error){/* Site remains usable without managed content. */}
 })();
+
+
+// Only load the third-party TikTok player after the visitor clicks Play.
+document.querySelectorAll('[data-tiktok-play]').forEach(button => {
+  button.addEventListener('click', () => {
+    const videoId=button.getAttribute('data-tiktok-play');
+    const holder=button.closest('.hero-tiktok-player-slot');
+    if(!holder || !/^\d{10,24}$/.test(videoId || ''))return;
+    const player=document.createElement('iframe');
+    player.className='hero-tiktok-player';
+    player.src='https://www.tiktok.com/player/v1/'+videoId+'?description=0&music_info=0';
+    player.title='Sir Oyedot AI Creator latest TikTok video';
+    player.loading='eager';
+    player.allow='accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';
+    player.allowFullscreen=true;
+    player.referrerPolicy='strict-origin-when-cross-origin';
+    holder.replaceChildren(player);
+  },{once:true});
+});
