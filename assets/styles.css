@@ -325,3 +325,57 @@ h1,h2,h3{text-wrap:balance}
 }
 @media(max-width:370px){.course-poster-steps span:nth-child(odd){padding:7px;font-size:9px}.course-poster{padding:23px}.course-poster-info strong{font-size:3.1rem}}
 
+
+
+/* Featured AI short: preview first, third-party video only after a visitor clicks. */
+.creator-feature-section{padding-top:92px;padding-bottom:102px}
+.creator-feature-header{display:flex;justify-content:space-between;align-items:end;gap:36px;margin-bottom:30px}
+.creator-feature-header h2{max-width:780px;margin-bottom:0}
+.creator-feature-header>p{max-width:300px;font-size:13px;line-height:1.8;color:#6e7780;margin-bottom:4px}
+.creator-feature-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1fr);background:#101e2b;color:#f8f6ef;border-radius:18px;overflow:hidden;min-height:410px;border:1px solid #243b43}
+.creator-feature-frame{position:relative;min-height:410px;max-height:525px;background:#111b27;overflow:hidden}
+.creator-feature-launch{height:100%;min-height:410px}
+.creator-feature-launch img{object-fit:cover;object-position:center;width:100%;height:100%;filter:brightness(.7) saturate(.87)}
+.creator-feature-stamp,.creator-feature-watch{position:absolute;left:25px;z-index:2;font-size:10px;letter-spacing:.13em;font-weight:800;color:#f8f6ef}
+.creator-feature-stamp{top:23px;border:1px solid #ffffff55;padding:8px 11px;border-radius:40px;background:#102434b5}
+.creator-feature-watch{bottom:25px}
+.creator-feature-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:78px;height:78px;display:grid;place-items:center;color:#0c1220;background:#f4ad5e;border-radius:50%;font-size:26px;padding-left:5px;box-shadow:0 0 0 10px #f8f6ef29}
+.creator-feature-frame iframe{display:block;width:min(100%,300px);max-width:100%;height:100%;aspect-ratio:9/16;margin:auto;border:0}
+.creator-feature-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,4.4vw,64px)}
+.creator-feature-category{font-weight:800;font-size:10px;letter-spacing:.18em;color:#a5e5d3;margin:0 0 23px}
+.creator-feature-copy h3{font:800 clamp(2.3rem,4.1vw,4.25rem)/1.08 Manrope,sans-serif;letter-spacing:-.065em;margin:0 0 20px}
+.creator-feature-copy h3 span{color:#f4ad5e}
+.creator-feature-copy>p:not(.creator-feature-category){max-width:520px;font-size:14px;line-height:1.85;color:#d9e2df}
+.creator-feature-copy .creator-feature-disclosure{font-size:11px!important;color:#a5b8b8!important;margin-top:8px}
+.creator-feature-actions{display:flex;align-items:center;flex-wrap:wrap;gap:23px;margin-top:24px}
+.creator-feature-actions .button{min-height:48px}
+.creator-feature-source{font-size:12px;font-weight:700;color:#f8f6ef;text-decoration:none;border-bottom:1px solid #a5e5d3;padding-bottom:4px}
+.creator-feature-source:hover{color:#f4ad5e}
+/* Responsive six-film YouTube Shorts gallery. */
+.latest-video-section{padding-top:74px}
+.latest-video-heading h2{max-width:750px}
+.latest-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:27px 21px}
+.latest-video-card{min-width:0}
+.latest-video-grid .clip-preview{height:380px;min-height:380px}
+.latest-video-description{color:#697983;font-size:12px;line-height:1.6;margin:-3px 0 15px}
+.latest-video-grid .clip-platform-stamp{color:#f8f6ef}
+.latest-video-scroll-note{display:none}
+@media(max-width:1020px){
+.creator-feature-layout{grid-template-columns:1fr 1fr}
+.creator-feature-header>p{display:none}
+.latest-video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:720px){
+.creator-feature-section{padding-top:64px;padding-bottom:75px}
+.creator-feature-header{margin-bottom:26px}
+.creator-feature-layout{grid-template-columns:1fr}
+.creator-feature-frame,.creator-feature-launch{height:360px;min-height:360px}
+.creator-feature-copy{padding:32px 25px 36px}
+.creator-feature-copy h3{font-size:clamp(2.2rem,10vw,3rem)}
+.creator-feature-actions{align-items:flex-start;gap:22px}
+.latest-video-section{padding-top:45px}
+.latest-video-grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(225px,78%);overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;gap:16px;padding:4px 5px 18px 0}
+.latest-video-card{scroll-snap-align:start}
+.latest-video-grid .clip-preview{height:350px;min-height:350px}
+.latest-video-scroll-note{display:block;margin:0 0 16px;color:#647782;font-size:12px;font-weight:700}
+}
