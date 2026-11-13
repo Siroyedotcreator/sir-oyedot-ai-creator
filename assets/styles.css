@@ -325,3 +325,39 @@ h1,h2,h3{text-wrap:balance}
 }
 @media(max-width:370px){.course-poster-steps span:nth-child(odd){padding:7px;font-size:9px}.course-poster{padding:23px}.course-poster-info strong{font-size:3.1rem}}
 
+
+
+/* Homepage: two featured videos visible together, using established navy, cream, gold and teal. */
+.hero{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(22px,3.4vw,54px)}
+.hero-video-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0;align-items:stretch}
+.hero-video-pair .hero-showreel,.hero-featured-tiktok{height:495px;min-width:0;min-height:0;overflow:hidden;border-radius:12px;background:#0c1220;border:1px solid #29454d;box-shadow:8px 11px 0 #ebe5d8}
+.hero-video-pair .hero-showreel{margin:0}
+.hero-video-pair .showreel-film-top{top:17px;left:14px;right:14px;font-size:8px;letter-spacing:.07em}
+.hero-video-pair .showreel-film-bottom{left:15px;right:13px;bottom:18px;gap:8px}
+.hero-video-pair .showreel-film-bottom strong{font-size:clamp(19px,2vw,28px);line-height:1.15}
+.hero-video-pair .showreel-overline{font-size:8px;letter-spacing:.1em}
+.hero-video-pair .showreel-browse{font-size:10px}
+.hero-video-pair .showreel-play{height:62px;width:62px;top:43%}
+.hero-video-pair .showreel-play span{font-size:22px}
+.hero-video-pair .showreel-frame--top{top:42px;right:15px}
+.hero-video-pair .showreel-frame--bottom{display:none}
+.hero-featured-tiktok{display:flex;flex-direction:column}
+.hero-video-card-head{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-shrink:0;background:#142b35;color:#f8f6ef;padding:12px 11px;font-size:9px;letter-spacing:.06em;font-weight:800}
+.hero-video-card-head>span:first-child{white-space:nowrap}
+.hero-video-card-head>span:last-child{color:#a5e5d3}
+.hero-video-new-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#f4ad5e;margin-right:5px;vertical-align:middle}
+.hero-tiktok-player{display:block;flex:1 1 auto;width:100%;min-height:0;border:0;background:#0c1220}
+.hero-video-external{display:flex;flex-shrink:0;align-items:center;justify-content:space-between;gap:9px;background:#142b35;color:#f8f6ef;text-decoration:none;padding:13px 12px;font-size:11px;font-weight:800;border-top:1px solid #a5e5d34a}
+.hero-video-external span{color:#f4ad5e}
+.hero-video-external:hover{color:#a5e5d3}
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;gap:32px}
+  .hero-video-pair{width:min(100%,720px);margin:0 auto}
+  .hero-video-pair .hero-showreel,.hero-featured-tiktok{height:520px}
+}
+@media(max-width:720px){
+  .hero-video-pair{display:flex;width:100%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:4px 10px 18px 2px;scrollbar-width:thin;scrollbar-color:#a5e5d3 #e9e4d8}
+  .hero-video-pair .hero-showreel,.hero-featured-tiktok{flex:0 0 min(79vw,320px);height:495px;scroll-snap-align:start;box-shadow:5px 6px 0 #ebe5d8;border-radius:12px}
+  .hero-video-pair .showreel-film-top{top:16px;left:14px;right:14px}
+  .hero-video-pair .showreel-film-bottom strong{font-size:27px}
+}
