@@ -144,38 +144,9 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
     if (typeof data.about==='string' && data.about.trim()) {
       const about=document.createElement('p');about.className='managed-about';about.textContent=data.about;section.append(about);
     }
-    const links=(Array.isArray(data.videos)?data.videos:[]).filter(v=>typeof v?.url==='string'&&/^https:\/\//.test(v.url)).slice(0,12);
-    if(links.length){
-      const list=document.createElement('div');list.className='managed-video-grid';
-      links.forEach((v,i)=>{
-        const link=document.createElement('a');link.href=v.url;link.target='_blank';link.rel='noopener noreferrer';link.className='managed-video-link';
-        const isYT=/youtu/.test(new URL(v.url).hostname);const badge=document.createElement('span');badge.textContent=isYT?'YOUTUBE':'TIKTOK';
-        const title=document.createElement('strong');title.textContent=(isYT?'YouTube Short ':'TikTok Video ')+String(i+1).padStart(2,'0');
-        const arrow=document.createElement('span');arrow.textContent='Watch ↗';link.append(badge,title,arrow);list.append(link);
-      });section.append(list);
-    }
     if(section.childElementCount>1){
       const final=main.querySelector('.final-cta');
       if(final)main.insertBefore(section,final);else main.append(section);
     }
   }catch(error){/* Site remains usable without managed content. */}
 })();
-
-
-// Only load the third-party TikTok player after the visitor clicks Play.
-document.querySelectorAll('[data-tiktok-play]').forEach(button => {
-  button.addEventListener('click', () => {
-    const videoId=button.getAttribute('data-tiktok-play');
-    const holder=button.closest('.hero-tiktok-player-slot');
-    if(!holder || !/^\d{10,24}$/.test(videoId || ''))return;
-    const player=document.createElement('iframe');
-    player.className='hero-tiktok-player';
-    player.src='https://www.tiktok.com/player/v1/'+videoId+'?description=0&music_info=0';
-    player.title='Sir Oyedot AI Creator latest TikTok video';
-    player.loading='eager';
-    player.allow='accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';
-    player.allowFullscreen=true;
-    player.referrerPolicy='strict-origin-when-cross-origin';
-    holder.replaceChildren(player);
-  },{once:true});
-});
