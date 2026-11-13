@@ -252,3 +252,76 @@ h1,h2,h3{text-wrap:balance}
 .managed-video-link span:last-child{font-size:12px;color:#b9d4d7}
 @media(max-width:720px){.managed-video-grid{grid-template-columns:1fr 1fr}.managed-video-link{min-height:125px;padding:17px}}
 @media(max-width:420px){.managed-video-grid{grid-template-columns:1fr}}
+
+
+/* AI Video Creation Training · brand navy #0c1220, cream #f8f6ef, gold #f4ad5e, teal #a5e5d3 */
+.course-promo{padding:0 0 105px;background:#f8f6ef}
+.course-promo-inner{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);background:#142b35;color:#f8f6ef;border-radius:16px;overflow:hidden;box-shadow:0 16px 42px #0c12201c}
+.course-promo-body{padding:clamp(30px,5vw,58px)}
+.course-promo-body h2{font-size:clamp(2.3rem,4.1vw,4rem);margin:16px 0 20px}
+.course-promo-body h2 em,.course-page-copy h1 em,.course-overview h2 em,.course-who h2 em{color:#f4ad5e;font-style:normal}
+.course-promo-body p:not(.kicker){font-size:15px;color:#c7d9d5;max-width:575px;line-height:1.85}
+.course-button{background:#f4ad5e;color:#142331;margin-top:15px}
+.course-promo-fee{padding:clamp(30px,4vw,44px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:12px;background:radial-gradient(circle at 98% 6%,#a5e5d350,transparent 56%),#193839}
+.course-promo-fee>span:first-child{color:#a5e5d3;font-size:11px;font-weight:800;letter-spacing:.15em}
+.course-promo-fee p{margin:24px 0 0;font-size:12px;letter-spacing:.1em}
+.course-promo-fee strong{font:800 clamp(3.3rem,6vw,5.5rem)/1 Manrope,sans-serif;letter-spacing:-.08em}
+.course-promo-fee>span:nth-last-child(2){font-size:12px;color:#c4d8d1}
+.course-promo-fee a{font-size:13px;color:#f4ad5e;text-decoration:none;font-weight:800;border-bottom:1px solid #f4ad5e;margin-top:16px;padding-bottom:8px}
+.course-page-hero{color:#f8f6ef;background:radial-gradient(circle at 75% 15%,#284d4c,#0c1220 67%);overflow:hidden}
+.course-page-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(30px,5vw,78px);padding-top:85px;padding-bottom:95px}
+.course-page-copy h1{font-size:clamp(3rem,5.5vw,5.7rem);margin:18px 0 28px;letter-spacing:-.07em}
+.course-page-lead{color:#c5d6d6;font-size:17px;line-height:1.85;max-width:650px}
+.course-page-pills{display:flex;flex-wrap:wrap;gap:9px;margin:27px 0 29px}
+.course-page-pills span{font-size:11px;font-weight:700;color:#d0e4df;border:1px solid #ffffff50;border-radius:30px;padding:8px 12px}
+.course-page-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.course-page-actions .button{min-height:48px}
+.course-outline{border:1px solid #ffffff65;color:#f8f6ef}
+.course-page-note{max-width:570px;color:#b3c7c6;margin:20px 0 0;font-size:11px}
+.course-poster{min-height:470px;padding:27px;border:1px solid #ffffff43;border-radius:14px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:radial-gradient(circle at 90% 10%,#a5e5d343,transparent 44%),linear-gradient(155deg,#254a50,#0b1827 74%);box-shadow:17px 17px 0 #ffffff0a}
+.course-poster:before{content:'';position:absolute;width:350px;height:350px;border-radius:50%;border:1px solid #f4ad5e61;right:-140px;top:90px;box-shadow:0 0 0 50px #ffffff0a,0 0 0 100px #ffffff08}
+.course-poster-top{display:flex;justify-content:space-between;font-size:10px;font-weight:800;letter-spacing:.13em;position:relative;z-index:1}
+.course-poster-top span:last-child{color:#f4ad5e}
+.course-poster-play{width:86px;height:86px;border:1px solid #f4ad5eaa;color:#f4ad5e;border-radius:50%;display:grid;place-items:center;position:relative;z-index:1;margin:35px auto 0;font-size:27px;text-indent:4px;background:#f4ad5e16}
+.course-poster-steps{display:flex;justify-content:center;align-items:center;gap:8px;position:relative;z-index:1}
+.course-poster-steps span:nth-child(odd){font-size:10px;font-weight:800;letter-spacing:.13em;padding:9px;border:1px solid #a5e5d3aa;border-radius:7px}
+.course-poster-steps span:nth-child(even){color:#f4ad5e}
+.course-poster-info{position:relative;z-index:1}
+.course-poster-info p{font-size:10px;font-weight:800;letter-spacing:.15em;color:#a5e5d3;margin:0 0 13px}
+.course-poster-info>span{display:block;font-size:11px;color:#d0e0de}
+.course-poster-info strong{display:block;font:800 clamp(3rem,5vw,4.4rem)/1.2 Manrope,sans-serif;letter-spacing:-.08em}
+.course-poster-info small{font-size:12px;color:#d0e0de}
+.course-overview h2{font-size:clamp(2.1rem,3.8vw,3.7rem);max-width:850px;margin:14px 0 20px}
+.course-section-lead{max-width:780px;color:#606c72;line-height:1.9}
+.course-learn-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:42px}
+.course-learn-card{padding:30px;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;background:#fffdfa;border:1px solid #dedbd1;border-radius:11px}
+.course-learn-card span{color:#967148;letter-spacing:.16em;font-size:10px;font-weight:800;margin-bottom:auto}
+.course-learn-card h3{font-size:clamp(1.45rem,2.2vw,2rem);margin:40px 0 13px}
+.course-learn-card p{color:#59646e;line-height:1.82;font-size:13px;margin:0}
+.course-overview-note{font-size:11px;color:#6e7981;margin:21px 0 0}
+.course-who{background:#1b363d;color:#f8f6ef}
+.course-who-grid{display:grid;grid-template-columns:1fr .9fr;gap:75px;align-items:center;padding-top:85px;padding-bottom:85px}
+.course-who h2{font-size:clamp(2.2rem,3.8vw,3.7rem);margin:18px 0}
+.course-who p:not(.kicker){color:#c8dcda;line-height:1.85}
+.course-who-list{border-top:1px solid #ffffff38}
+.course-who-list p{display:flex;gap:25px;padding:20px 0;border-bottom:1px solid #ffffff38;margin:0;font-weight:700}
+.course-who-list span{color:#a5e5d3;font-size:12px}
+.course-register-box{padding:clamp(28px,5vw,58px);background:#e8e2d6;border-radius:14px;display:grid;grid-template-columns:1fr .72fr;gap:34px;align-items:center}
+.course-register h2{font-size:clamp(2.2rem,4vw,3.9rem);margin:16px 0 20px}
+.course-register p:not(.kicker){color:#5d6870;line-height:1.85;max-width:590px}
+.course-register-price{padding:30px;background:#122a34;color:#f8f6ef;border-radius:10px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.course-register-price>span{color:#a5e5d3;letter-spacing:.13em;font-size:11px;font-weight:800}
+.course-register-price strong{font:800 clamp(3.3rem,5vw,4.5rem)/1.1 Manrope,sans-serif;letter-spacing:-.08em}
+.course-register-price .button{width:100%;margin:10px 0 5px}
+.course-register-price>a:last-child{font-size:12px;color:#cbdad8;text-decoration:none}
+.course-faq{padding-top:20px}
+.course-faq h2{margin:17px 0 30px}
+@media(max-width:1020px){.course-page-grid{gap:32px}.course-who-grid{gap:40px}}
+@media(max-width:720px){
+ .course-promo{padding-bottom:65px}.course-promo-inner{grid-template-columns:1fr;border-radius:10px}.course-promo-body,.course-promo-fee{padding:31px 26px}.course-promo-body h2{font-size:clamp(2.1rem,9vw,3.15rem)}.course-promo-fee p{margin-top:9px}
+ .course-page-grid{grid-template-columns:1fr;padding-top:62px;padding-bottom:70px;gap:42px}.course-page-copy h1{font-size:clamp(2.45rem,9vw,4.2rem)}.course-page-lead{font-size:15px}
+ .course-poster{min-height:390px}.course-learn-grid{grid-template-columns:1fr;gap:14px}.course-learn-card{min-height:215px;padding:26px}.course-learn-card h3{margin:22px 0 10px}
+ .course-who-grid{grid-template-columns:1fr;padding-top:62px;padding-bottom:62px;gap:22px}.course-register-box{grid-template-columns:1fr}.course-register-price{padding:24px}.course-faq{padding-top:0}
+}
+@media(max-width:370px){.course-poster-steps span:nth-child(odd){padding:7px;font-size:9px}.course-poster{padding:23px}.course-poster-info strong{font-size:3.1rem}}
+

@@ -126,7 +126,7 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
     const data = await response.json();
     if (typeof data.whatsapp === 'string' && /^[1-9]\d{7,14}$/.test(data.whatsapp)) {
       document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => {
-        a.href='https://wa.me/'+data.whatsapp;
+        a.href='https://wa.me/'+data.whatsapp+new URL(a.href).search;
         if (a.textContent.includes('WhatsApp ·')) a.textContent='WhatsApp · +'+data.whatsapp+' ↗';
         if(a.classList.contains('contact-card')){const strong=a.querySelector('strong');if(strong)strong.textContent='+'+data.whatsapp+' ↗';}
       });
