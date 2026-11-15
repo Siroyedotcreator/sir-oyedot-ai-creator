@@ -417,3 +417,26 @@ a.youtube-launch:focus-visible{outline:3px solid #f4ad5e;outline-offset:4px}
 
 /* Portfolio refinement: prevent media overflow on narrow screens */
 img,video,iframe{max-width:100%}.hero-main,.project-copy,.clip-meta{min-width:0}@media(max-width:600px){.actions .button{max-width:100%;text-align:center}.hero h1{overflow-wrap:break-word}.contact-grid,.project-list{min-width:0}}
+
+/* Balanced mobile cinematic motion: compositor-friendly transforms and opacity only. */
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+  .homepage .hero-main .eyebrow{animation:cinema-rise .48s both}
+  .homepage .hero-main h1{animation:cinema-rise .64s .08s both}
+  .homepage .hero-main .lead{animation:cinema-rise .64s .16s both}
+  .homepage .hero-main .actions{animation:cinema-rise .6s .24s both}
+  .homepage .creator-portrait-frame{animation:cinema-rise .7s .28s both}
+  .site-header nav.is-open{animation:cinema-menu .28s cubic-bezier(.22,1,.36,1) both;transform-origin:top center}
+  .site-header nav.is-open a{animation:cinema-rise .3s both}
+  .site-header nav.is-open a:nth-child(2){animation-delay:.035s}
+  .site-header nav.is-open a:nth-child(3){animation-delay:.07s}
+  .site-header nav.is-open a:nth-child(4){animation-delay:.105s}
+  .site-header nav.is-open a:nth-child(5){animation-delay:.14s}
+  .site-header nav.is-open a:nth-child(6){animation-delay:.175s}
+  .clip-card:active,.service-card:active,.process-tile:active{transform:scale(.985);transition:transform .18s ease}
+  .button:active,.mobile-action-bar a:active{transform:scale(.97);transition:transform .16s ease}
+  .motion-item.motion-pending{transform:translate3d(0,18px,0);transition:opacity .52s ease,transform .52s cubic-bezier(.22,1,.36,1)}
+  .motion-item.motion-in{transform:none}
+}
+@keyframes cinema-rise{from{opacity:0;transform:translate3d(0,15px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes cinema-menu{from{opacity:0;transform:translate3d(0,-10px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@media(prefers-reduced-motion:reduce){.motion-pending{opacity:1!important;transform:none!important}.site-header nav a,.hero-main>*{animation:none!important}}

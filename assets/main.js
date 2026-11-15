@@ -93,29 +93,33 @@ if (!document.querySelector('.mobile-action-bar')) {
   document.body.classList.add('has-mobile-bar');
 }
 
-// Subtle progressive enhancement: content remains visible if scripting is unavailable.
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const revealTargets = document.querySelectorAll('.service-card,.process-step,.feature-card,.project-row,.clip-card,.contact-card');
-  const revealObserver = new IntersectionObserver((entries,observer) => {
+// Balanced motion is progressive: content is never hidden while waiting for JavaScript.
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealSelector = '.service-card,.process-step,.process-tile,.feature-card,.project-row,.clip-card,.contact-card,.episode-card,.doc-stat,.creator-feature-layout,.home-documentary-content,.section-title-row';
+let revealObserver;
+const initializeMotion = () => {
+  if (revealObserver) revealObserver.disconnect();
+  document.querySelectorAll('.motion-pending').forEach(el => el.classList.remove('motion-pending'));
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  revealObserver = new IntersectionObserver((entries, observer) => {
     for (const entry of entries) {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('motion-pending');
-        entry.target.classList.add('motion-in');
-        observer.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.remove('motion-pending');
+      entry.target.classList.add('motion-in');
+      observer.unobserve(entry.target);
     }
-  }, {rootMargin:'0px 0px -35px 0px',threshold:0.05});
-  revealTargets.forEach(target => {
-    target.classList.add('motion-item');
-    if (target.getBoundingClientRect().top > window.innerHeight + 80) {
-      target.classList.add('motion-pending');
-      revealObserver.observe(target);
-    } else {
-      target.classList.add('motion-in');
-    }
+  }, {rootMargin:'0px 0px -28px 0px',threshold:0.06});
+  document.querySelectorAll(revealSelector).forEach(el => {
+    if (el.classList.contains('motion-in')) return;
+    el.classList.add('motion-item');
+    if (el.getBoundingClientRect().top > window.innerHeight + 55) {
+      el.classList.add('motion-pending');
+      revealObserver.observe(el);
+    } else el.classList.add('motion-in');
   });
-}
-
+};
+initializeMotion();
+reducedMotion.addEventListener?.('change', initializeMotion);
 
 // Public owner-managed content. Existing static pages remain the fallback.
 (async () => {
