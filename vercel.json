@@ -52,5 +52,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "sir-oyedot-ai-creator-1se5\\.vercel\\.app"
+        }
+      ],
+      "destination": "https://sir-oyedot-ai-creator.vercel.app/:path*",
+      "permanent": true
+    }
   ]
 }
